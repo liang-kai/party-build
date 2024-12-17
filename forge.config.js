@@ -9,20 +9,19 @@ module.exports = {
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
-      config: {},
+      config: {
+        platforms: ['win32'],
+        config: {
+          "name": "party_app",
+          "description": "党建APP 桌面端",
+          "noMsi": true
+        },
+      },
     },
     {
       name: '@electron-forge/maker-zip',
       platforms: ['darwin'],
-    },
-    {
-      name: '@electron-forge/maker-deb',
-      config: {},
-    },
-    {
-      name: '@electron-forge/maker-rpm',
-      config: {},
-    },
+    }
   ],
   plugins: [
     {
