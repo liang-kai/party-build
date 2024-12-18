@@ -4,8 +4,7 @@ const { FuseV1Options, FuseVersion } = require('@electron/fuses');
 module.exports = {
   packagerConfig: {
     asar: true,
-    executableName: "党建学习平台",
-    icon: './assets/icon.ico'
+    executableName: "党建学习平台"
   },
   rebuildConfig: {},
   makers: [
@@ -15,7 +14,6 @@ module.exports = {
         name: "party_app",
         authors: "liang-kai",
         description: "党建APP 桌面端",
-        setupIcon: "./assets/icon.ico",
         noMsi: true,
         setupExe: '党建学习平台-Setup.exe',
         shortcutName: '党建学习平台',
