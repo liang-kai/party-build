@@ -5,30 +5,34 @@ on:
       - 'v*'
 
 jobs:
-  publish_on_mac:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@master
-      with:
-        node-version: 20
-    - name: install dependencies
-      run: npm install
-    - name: publish
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: npm run publish
-      
-  publish_on_win:
+  release:
     runs-on: windows-latest
+    
     steps:
-    - uses: actions/checkout@v2       
-    - uses: actions/setup-node@master
-      with:
-        node-version: 20
-    - name: install dependencies
-      run: npm install
-    - name: publish
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: npm run publish
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build and Make
+        run: npm run make
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          draft: false
+          prerelease: false
+          files: |
+            out/make/squirrel.windows/x64/*.exe
+            out/make/squirrel.windows/x64/RELEASES
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

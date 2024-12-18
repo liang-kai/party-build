@@ -10,17 +10,12 @@ module.exports = {
     {
       name: '@electron-forge/maker-squirrel',
       config: {
-        platforms: ['win32'],
-        config: {
-          "name": "party_app",
-          "description": "党建APP 桌面端",
-          "noMsi": true
-        },
-      },
-    },
-    {
-      name: '@electron-forge/maker-zip',
-      platforms: ['darwin'],
+        name: "party_app",
+        authors: "liang-kai",
+        description: "党建APP 桌面端",
+        // setupIcon: "./assets/icon.ico",  // 暂时注释掉这行
+        noMsi: true
+      }
     }
   ],
   plugins: [
