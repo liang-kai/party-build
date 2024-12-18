@@ -1,8 +1,8 @@
 {
   "name": "party-building-vite",
-  "productName": "party-building-vite",
+  "productName": "党建学习平台",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "党建学习平台 - 传承红色基因，弘扬革命精神",
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
@@ -33,6 +33,8 @@
   "license": "MIT",
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1",
-    "vue": "^3.5.13"
+    "element-plus": "^2.9.1",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
   }
 }
