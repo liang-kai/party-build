@@ -47,21 +47,21 @@ const fetchHomeData = async () => {
       params: { picKey: 'home_background' },
       skipInterceptor: true
     })
-    backgroundImage.value = bgResponse.data.url // 假设接口返回的图片URL在data.url中
+    backgroundImage.value = bgResponse.data // 假设接口返回的图片URL在data.url中
 
     // 获取主标题
     const mainTitleResponse = await axiosInstance.get('/show/text', {
       params: { textKey: 'home_main_title' },
       skipInterceptor: true
     })
-    mainTitle.value = mainTitleResponse.data.text // 假设接口返回的文本在data.text中
+    mainTitle.value = mainTitleResponse.data // 假设接口返回的文本在data.text中
 
     // 获取副标题
     const subTitleResponse = await axiosInstance.get('/show/text', {
       params: { textKey: 'home_sub_title' },
       skipInterceptor: true
     })
-    subTitle.value = subTitleResponse.data.text
+    subTitle.value = subTitleResponse.data
   } catch (error) {
     console.error('Error fetching home data:', error)
     // 设置默认值
