@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Menu } from 'electron';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
 
@@ -34,6 +34,28 @@ const createWindow = () => {
       }
     }
   });
+
+  // Define the menu template
+  const menuTemplate = [
+    {
+      label: 'View',
+      submenu: [
+        {
+          label: 'Toggle DevTools',
+          accelerator: 'CmdOrCtrl+Shift+I',
+          click: () => {
+            mainWindow.webContents.toggleDevTools();
+          },
+        },
+      ],
+    },
+  ];
+
+  // Create the menu from the template
+  const menu = Menu.buildFromTemplate(menuTemplate);
+
+  // Set the application menu
+  Menu.setApplicationMenu(menu);
 };
 
 // This method will be called when Electron has finished
