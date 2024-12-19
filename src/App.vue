@@ -1,10 +1,22 @@
 <template>
   <div class="app">
-    <router-view></router-view>
+    <router-view v-slot="{ Component }">
+      <keep-alive :exclude="excludeComponents">
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
   </div>
 </template>
 
 <script setup>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+const excludeComponents = computed(() => {
+  const currentRoute = route.matched[0]
+  return currentRoute?.meta?.noCache ? [currentRoute.name] : []
+})
 </script>
 
 <style>
